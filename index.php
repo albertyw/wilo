@@ -9,7 +9,7 @@ require('backend/parser_php5.php');
 <script type="text/javascript" src="clock.js"></script>
 <link rel="STYLESHEET" type="text/css" href="/codes/wilo/default.css" />
 </head>
-<body onload="updateClock(); setInterval('updateClock()', 1000 )">
+<body onload="updateClock(); setInterval('updateClock()', 30 * 1000 )">
 <div id="currentTime">
 </div>
 
@@ -34,12 +34,6 @@ Saferide Boston All</a><br />
 <?php
 $url = 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mit&r=saferidebostonall&d=manc58&s=beac528&ts=487comm';
 include('backend/saferide.php');
-?>
-</div>
-<a href="#">Green Line Inbound</a><br />
-<div class="greenlineprediction">
-<?php
-include('backend/greenline.php');
 ?>
 </div>
 </td>
