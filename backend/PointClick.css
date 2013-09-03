@@ -1,0 +1,233 @@
+/* CSS Document */
+img.wind { behavior: url(iepngfix.htc) }
+* { -moz-box-sizing: border-box; }
+* { -webkit-box-sizing: border-box; }
+
+div.clear { display:inline; }
+
+/* Hazards/Observations/Map CSS */
+#forecast_info{
+	margin-left:5px;
+	width:660px;
+/*	border:solid #A8BCFA 1px;*/
+}
+#hazards{
+	float:left;
+/*	margin:10px;*/
+	padding:0px;
+	text-align:center;
+	vertical-align:middle;
+/*	border:solid #A8BCFA 1px;	*/
+	width:300px;
+	word-wrap: break-word;
+}
+#map {
+	float:right;
+/*	margin:10px;*/
+	padding:5px;
+	width:340px;
+	text-align:center;
+/*	border:solid #A8BCFA 1px;	*/
+}
+
+/* Daily Table CSS */
+
+
+div.day{
+	float:left;
+	height:130px;
+	width:50%;
+}
+div.night{
+	float:right;
+	height:130px;
+	width:50%;
+}
+#night_centered{
+	float:left;
+	height:130px;
+	width:100%;
+}
+div.daily_content{
+	position:relative;
+	width:250px;
+	text-align:center;
+	font-size:12px;
+}
+div.daily_top{
+	position:absolute;
+	left:0px;
+	top:0px;  /* THIS WILL OBVIOUSLY NEED TO BE CHANGED TO GET IT TO LINE UP */
+	text-align:center;
+	background-color:#A8BCFA;
+	color:#FFFFFF;
+	font-size:16px;
+	font-weight:bold;
+	width:250px;
+	height:19px;
+	background: url('http://forecast.weather.gov/afm/image/daily_top.png') no-repeat top left;
+}
+div.daily_temp{
+	position:absolute;
+	top:19px;
+	left:0px;
+	width:75px;
+	height:68px;
+	text-align:center;
+	border:solid #A8BCFA 1px;
+	border-top:none;
+}
+div.daily_pop1{
+	position:absolute;
+	top:34px;
+	left:75px;
+	width:100px;
+	height:53px;
+	text-align:center;
+	line-height:35pt;
+	font-size:18px;
+	background-repeat:repeat-y;
+}
+div.daily_pop2{
+	position:absolute;
+	top:19px;
+	left:75px;
+	width:100px;
+	height:68px;
+	text-align:center;
+	border-bottom:solid #A8BCFA 1px;
+	line-height:13pt;
+}
+div.daily_sun{
+	position:absolute;
+	top:19px;
+	left:175px;
+	width:75px;
+	height:68px;
+	border:solid #A8BCFA 1px;
+	border-top:none;
+}
+div.daily_rain{
+	position:absolute;
+	top:87px;
+	left:0px;
+	width:250px;
+	height:33px;
+	border-right:solid #A8BCFA 1px;
+	border-left:solid #A8BCFA 1px;
+	line-height:30px;
+	text-align:left;
+}
+div.daily_snow{
+	position:absolute;
+	top:117px;
+	left:0px;
+	width:250px;
+	height:33px;
+	line-height:30px;
+	border:solid #A8BCFA 1px;
+	border-bottom:none;
+	text-align:left;
+}
+img.daily_snowimg {
+	float:left;
+	margin:0 6px 0 16px;
+}
+img.daily_precipimg {
+	float:left;
+	margin:0 6px 0 40px;
+}
+div.daily_bot{
+	position:absolute;
+	height:12px;
+	width:250px;
+	left:0px;
+	background: url('http://forecast.weather.gov/afm/image/daily_bot.png') no-repeat top left;
+}
+
+div.date {
+	text-align:center;
+	color:7B93ED;
+	font-size:30px;
+}
+div.printable{
+	width:670px;
+}
+div.daydivider{
+
+}
+
+
+
+/*  Hourly Table CSS */
+
+
+div.hourly_container{
+	clear:both;
+	position:relative;
+	height:275px;
+	width:670px;
+}
+div.hourly_day_container{
+	float:left;
+	padding-left:2px;
+	width:50%;
+	background-color:#FFFFFF;
+}
+div.hourly_night_container{
+float:left;
+width:50%;
+padding-left:2px;
+}
+#hourly_night_container_centered{
+float:left;
+width:100%;
+}
+table.hourly
+{
+	width:310px;
+	text-align: center;
+	border-collapse: collapse;
+	text-align:center;
+}
+table.hourly th {
+	padding:4px;
+	font-weight:bold;
+	color:#FFFFFF;
+	font-size: 13px;
+	background-color:#A8BCFA;
+	background: url('http://forecast.weather.gov/afm/image/gradhead.png') repeat-x;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+table.hourly th.hourly_topleft { background: url('http://forecast.weather.gov/afm/image/topleft.png') left -1px no-repeat; }
+table.hourly th.hourly_topright { background: url('http://forecast.weather.gov/afm/image/topright.png') right -1px no-repeat; }
+a.hourly_link:link {color: #FFFFFF}     /* unvisited link */
+a.hourly_link:visited {color: #FFFFFF}  /* visited link */
+a.hourly_link:hover {color: #FFFFFF}   /* mouse over link */
+a.hourly_link:active {color: #FFFFFF}   /* selected link */
+table.hourly td.hourly_time {
+	font-size:12px;
+	font-weight:bold;
+	color:#FFFFFF;
+	background: #e8edff url('http://forecast.weather.gov/afm/image/gradtime.png') left no-repeat;
+}
+table.hourly  td{
+	font-size:14px;
+	background: #e8edff url('http://forecast.weather.gov/afm/image/gradback.png') repeat-x;
+	text-align:center;
+}
+table.hourly td.hourly_weather{ font-size:12px; }
+table.hourly td.hourly_wind{ font-size:12px; }
+tfoot.hourly
+{
+	height:10px;
+	background: #e8edff;
+}
+table.hourly td.hourly_botleft { background: url('http://forecast.weather.gov/afm/image/botleft.png') left bottom no-repeat; }
+table.hourly td.hourly_botright { background: url('http://forecast.weather.gov/afm/image/botright.png') right bottom no-repeat; }
+
+
+
+
+

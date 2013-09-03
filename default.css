@@ -1,0 +1,21 @@
+#currentTime{
+    font-size: 50px;
+    text-align: center;
+    color: #7B93ED;
+    padding-top: 50px;
+    padding-bottom:50px;
+}
+#rides{
+    font-size: 30px;
+}
+.saferidemessage{
+    font-size: 12px;
+}
+.saferideprediction, .greenlineprediction{
+    margin-bottom: 40px;
+    font-size: 50px;
+}
+#weather1, #weather2{
+    vertical-align: top;
+    width:630px;
+}
