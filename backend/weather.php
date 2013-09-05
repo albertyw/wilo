@@ -1,5 +1,5 @@
 <link rel="STYLESHEET" type="text/css" href="http://forecast.weather.gov/afm/main.css" />
-<link rel="STYLESHEET" type="text/css" href="/codes/wilo/backend/PointClick.css" />
+<link rel="STYLESHEET" type="text/css" href="/backend/PointClick.css" />
 <?php
 $noaa_url = 'http://forecast.weather.gov/afm/PointClick.php?site=box&zmx=1&zmy=1&map.x=202&map.y=116';
 

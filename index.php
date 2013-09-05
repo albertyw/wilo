@@ -7,7 +7,7 @@
   <head>
     <title>What's It Like Outside?</title>
     <script type="text/javascript" src="clock.js"></script>
-    <link rel="STYLESHEET" type="text/css" href="/codes/wilo/default.css" />
+    <link rel="STYLESHEET" type="text/css" href="default.css" />
   </head>
   <body onload="updateClock(); setInterval('updateClock()', 1 * 1000 )">
     <div id="currentTime">
