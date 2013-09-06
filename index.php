@@ -1,8 +1,3 @@
-<?php
-  error_reporting(E_ALL);
-  ini_set('display_errors', '1');
-  require('backend/parser_php5.php');
-?>
 <html>
   <head>
     <title>What's It Like Outside?</title>
@@ -18,16 +13,7 @@
       <tr>
 
         <td id="rides">
-          <a href="http://www.nextbus.com/predictor/prediction.shtml?a=mit&r=saferidebostonw&s=manc58">
-            Saferide Boston West
-          </a>
-          <br />
-          <div class="saferideprediction">
-            <?php
-              $url = 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mit&r=saferidebostonw&s=manc58';
-              include('backend/saferide.php');
-            ?>
-          </div>
+          <?php include('backend/saferide.php'); ?>
         </td>
 
         <td id="weather">
@@ -35,7 +21,5 @@
         </td>
       </tr>
     </table>
-    <br />
-    <br />
   </body>
 </html>
