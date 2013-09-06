@@ -6,8 +6,8 @@
 <html>
   <head>
     <title>What's It Like Outside?</title>
-    <script type="text/javascript" src="clock.js"></script>
-    <link rel="STYLESHEET" type="text/css" href="default.css" />
+    <script type="text/javascript" src="backend/clock.js"></script>
+    <link rel="STYLESHEET" type="text/css" href="backend/default.css" />
   </head>
   <body onload="updateClock(); setInterval('updateClock()', 1 * 1000 )">
     <div id="currentTime">
