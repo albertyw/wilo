@@ -18,24 +18,13 @@
       <tr>
 
         <td id="rides">
-          <?php
-            /*<a href="http://www.nextbus.com/predictor/prediction.shtml?a=mit&r=saferidebostonw&d=mass84&s=manc58&ts=here32">
-            Saferide Boston West</a><br />
-            <div class="saferideprediction">
-            <?php
-            $url = 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mit&r=saferidebostonw&d=mass84&s=manc58&ts=here32';
-            include('backend/saferide.php');
-            ?>
-            </div>
-            */
-          ?>
-          <a href="http://www.nextbus.com/predictor/prediction.shtml?a=mit&r=saferidebostonall&d=manc58&s=beac528&ts=487comm">
-            Saferide Boston All
+          <a href="http://www.nextbus.com/predictor/prediction.shtml?a=mit&r=saferidebostonw&s=manc58">
+            Saferide Boston West
           </a>
           <br />
           <div class="saferideprediction">
             <?php
-              $url = 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mit&r=saferidebostonall&d=manc58&s=beac528&ts=487comm';
+              $url = 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=mit&r=saferidebostonw&s=manc58';
               include('backend/saferide.php');
             ?>
           </div>
