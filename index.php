@@ -30,7 +30,7 @@
           </div>
         </td>
 
-        <td id="weather1">
+        <td id="weather">
           <?php include('backend/weather.php'); ?>
         </td>
       </tr>
