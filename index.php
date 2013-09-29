@@ -18,5 +18,11 @@
         </td>
       </tr>
     </table>
+
+    <h6>
+      <a href="https://github.com/albertyw/wilo">
+        If you're wondering what the hell this is...
+    </a>
+  </h6>
   </body>
 </html>
