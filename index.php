@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>What's It Like Outside?</title>
+    <script type="text/javascript" src="backend/domaincheck.js"></script>
     <link rel="STYLESHEET" type="text/css" href="backend/default.css" />
   </head>
   <body>
