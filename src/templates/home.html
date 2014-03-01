@@ -1,1 +1,9 @@
+<html>
+<head>
+<title>WILO</title>
 
+{% for stop in stops %}
+  Time until {{stop.line_name}} at {{ stop.stop_name }}: {{ stop.time }}
+{% endfor %}
+</head>
+</html>
