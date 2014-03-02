@@ -23,7 +23,7 @@
       at
       <span>{[{ stop.stop_name }]}</span>:
       <h4>
-        {[{ stop.formatted_times }]}
+        {[{ stop.times|formatted_times }]}
       </h4>
       {[{ stop.times.length > 0 ? ' minutes' : '' }]}
     </div>
