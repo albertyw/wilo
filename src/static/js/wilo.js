@@ -39,15 +39,19 @@ function calculateProgressBar(times, total_time){
   var time_slots = new Array(total_time);
   for(var i = 0; i < time_slots.length; i++){time_slots[i] = 'default';}
 
-  times.sort();
-
   // Populate time slots with values
   for(var i = 0; i < times.length; i++){
     var arrival = times[i];
     // Red
-    for(var j=0; j < 2; j++){ time_slots[arrival-j] = 'danger';}
+    for(var j=0; j < 2; j++){
+      s = time_slots[arrival-j];
+      if(s != 'warning' && s != 'success') time_slots[arrival-j] = 'danger';
+    }
     // Yellow
-    for(var j=2; j < 6; j++){ time_slots[arrival-j] = 'warning';}
+    for(var j=2; j < 6; j++){
+      s = time_slots[arrival-j];
+      if(s != 'success') time_slots[arrival-j] = 'warning';
+    }
     // Green
     for(var j=6; j < 10; j++){ time_slots[arrival-j] = 'success';}
   }
