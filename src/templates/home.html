@@ -1,4 +1,4 @@
-<html>
+<html ng-app="wilo">
 <head>
 <title>WILO</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -7,33 +7,26 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+<script src="/static/js/wilo.js"></script>
 </head>
 
 <body class="palette-turquoise">
 
 <div class="container">
-  <div class="col-md-12">
+  <div class="col-md-12" ng-controller="StopsController">
     <h1>
       Time until
     </h1>
-    {% for stop in stops %}
-      <h4>
-        {{stop.line_name}}
-      </h4>
+    <div ng-repeat="stop in stops">
+      <h4>{[{ stop.line_name }]}</h4>
       at
-      {{ stop.stop_name }}:
+      <span>{[{ stop.stop_name }]}</span>:
       <h4>
-        {% for time in stop.times %}
-          {{ time }}{% if not loop.last %},{% endif %}
-        {% endfor %}
-        {% if stop.times|length == 0 %}
-          unknown
-        {% endif %}
+        {[{ stop.formatted_times }]}
       </h4>
-      {% if stop.times|length != 0 %}
-        minutes
-      {% endif %}
-    {% endfor %}
+      {[{ stop.times.length > 0 ? ' minutes' : '' }]}
+    </div>
   </div>
 </div>
 </body>
