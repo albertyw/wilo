@@ -11,7 +11,7 @@
 <script src="/static/js/wilo.js"></script>
 </head>
 
-<body class="palette-turquoise">
+<body class="palette-peter-river">
 
 <div class="container">
   <div class="col-md-12" ng-controller="StopsController">
@@ -26,6 +26,9 @@
         {[{ stop.times|formatted_times }]}
       </h4>
       {[{ stop.times.length > 0 ? ' minutes' : '' }]}
+      <div class="progress">
+        <div class="progress-bar progress-bar-{[{ p.0 }]}" style="width: {[{p.1 }]}%;" ng-repeat="p in stop.progress"></div>
+      </div>
     </div>
   </div>
 </div>

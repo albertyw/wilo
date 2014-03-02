@@ -17,6 +17,8 @@ def get_times(stop_id):
     # Get all times less than 30 minutes or at least 1 time
     if len(stop_times) > 0:
         min_stop_time = min(stop_times)
+    else:
+        return []
     stop_times = [time for time in stop_times if time <= 30]
     if min_stop_time not in stop_times:
         stop_times.append(min_stop_time)
