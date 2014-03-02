@@ -3,7 +3,16 @@
 <title>WILO</title>
 
 {% for stop in stops %}
-  Time until {{stop.line_name}} at {{ stop.stop_name }}: {{ stop.time }}
+  Time until {{stop.line_name}} at {{ stop.stop_name }}:
+  <b>
+    {% for time in stop.times %}
+      {{ time }}{% if not loop.last %},{% endif %}
+    {% endfor %}
+    {% if stop.times|length == 0 %}
+      unknown
+    {% endif %}
+  </b>
+  minutes
 {% endfor %}
 </head>
 </html>

@@ -16,7 +16,7 @@ def root():
     d = data.get_routes()
     stops = []
     for stop in settings.STOPS:
-        stop['time'] = data.get_time(stop['stop_id'])
+        stop['times'] = data.get_times(stop['stop_id'])
         stops.append(stop)
     return render_template('home.html', stops = stops)
 
