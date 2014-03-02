@@ -24,6 +24,7 @@ wilo.controller('StopsController', function($scope, $http, $timeout) {
 // Filter format time array into string
 wilo.filter('formatted_times', function() {
   return function(times) {
+    times.sort(function(a,b){return parseInt(a)-parseInt(b)});
     formatted_times = times.join(', ');
     if(times.length == 0) formatted_times = 'Unknown';
     return formatted_times;
@@ -39,15 +40,16 @@ function calculateProgressBar(times, total_time){
   for(var i = 0; i < time_slots.length; i++){time_slots[i] = 'default';}
 
   times.sort();
-  times.reverse();
 
   // Populate time slots with values
   for(var i = 0; i < times.length; i++){
     var arrival = times[i];
     // Red
-    for(var j=0; j < 5; j++){ time_slots[arrival-j] = 'danger';}
+    for(var j=0; j < 2; j++){ time_slots[arrival-j] = 'danger';}
     // Yellow
-    for(var j=5; j < 10; j++){ time_slots[arrival-j] = 'warning';}
+    for(var j=2; j < 6; j++){ time_slots[arrival-j] = 'warning';}
+    // Green
+    for(var j=6; j < 10; j++){ time_slots[arrival-j] = 'success';}
   }
 
   // Find lengths of times
@@ -63,7 +65,6 @@ function calculateProgressBar(times, total_time){
     current_length += 1;
   }
   time_lengths.push([current_color, current_length]);
-  console.log(time_lengths);
 
   // Convert lengths into percentages
   for(var i=0; i<time_lengths.length; i++){
