@@ -10,14 +10,17 @@ wilo.config(function($interpolateProvider) {
 // Controller for stop times
 wilo.controller('StopsController', function($scope, $http, $timeout) {
   var getTimes = function() {
-    $http.get('data/times.json').success(function(data) {
-      $scope.stops = data;
-      angular.forEach($scope.stops, function(stop, index){
+    angular.forEach(stops, function(stop, index){
+      var proximoUrl = 'http://proximobus.appspot.com/agencies/sf-muni/stops/'+stop.stop_id+'/predictions.json';
+      $http.get(proximoUrl).success(function(data) {
+        stop.times = parseTimes(data);
         stop.progress = calculateProgressBar(stop.times, 30);
       });
     });
     $timeout(getTimes, 30 * 1000);
   }
+  stops = addDefaultTimes(stops);
+  $scope.stops = stops;
   getTimes();
 });
 
@@ -31,6 +34,36 @@ wilo.filter('formatted_times', function() {
   };
 });
 
+/*
+ * Put default times in stops so that there isn't an error before the first AJAX request is finished
+ */
+function addDefaultTimes(stops) {
+  for(var i=0; i<stops.length; i++){
+    stops[i].times = [];
+  }
+  return stops;
+}
+
+/*
+ * Parse the data returned from proximobus.appspot.com
+ */
+function parseTimes(proximoData) {
+  proximoData = proximoData.items;
+  var times = [];
+  var min_time = undefined;
+  for(var i=0; i<proximoData.length; i++){
+    var time = proximoData[i].minutes;
+    if(time < min_time){
+      min_time = time;
+    }
+    times.push(time);
+  }
+  if(min_time != undefined && times.length == 0){
+    times.push(min_time);
+  }
+  times.sort();
+  return times;
+}
 /*
  * Find widths in order to make an arrival progress bar
  */

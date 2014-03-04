@@ -14,11 +14,7 @@ app.debug = settings.DEBUG
 
 @app.route("/")
 def root():
-    stops = []
-    for stop in settings.STOPS:
-        stop['times'] = data.get_times(stop['stop_id'])
-        stops.append(stop)
-    return render_template('home.html', stops = stops)
+    return render_template('home.html', stops = json.dumps(settings.STOPS))
 
 @app.route("/data/times.json")
 def get_update():
