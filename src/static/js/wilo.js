@@ -50,16 +50,8 @@ function addDefaultTimes(stops) {
 function parseTimes(proximoData) {
   proximoData = proximoData.items;
   var times = [];
-  var min_time = undefined;
   for(var i=0; i<proximoData.length; i++){
-    var time = proximoData[i].minutes;
-    if(time < min_time){
-      min_time = time;
-    }
-    times.push(time);
-  }
-  if(min_time != undefined && times.length == 0){
-    times.push(min_time);
+    times.push(proximoData[i].minutes);
   }
   times.sort();
   return times;
@@ -77,16 +69,21 @@ function calculateProgressBar(times, total_time){
     var arrival = times[i];
     // Red
     for(var j=0; j < 2; j++){
+      if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       s = time_slots[arrival-j];
       if(s != 'warning' && s != 'success') time_slots[arrival-j] = 'danger';
     }
     // Yellow
     for(var j=2; j < 6; j++){
+      if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       s = time_slots[arrival-j];
       if(s != 'success') time_slots[arrival-j] = 'warning';
     }
     // Green
-    for(var j=6; j < 10; j++){ time_slots[arrival-j] = 'success';}
+    for(var j=6; j < 10; j++){
+      if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
+      time_slots[arrival-j] = 'success';
+    }
   }
 
   // Find lengths of times
