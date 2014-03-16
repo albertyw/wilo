@@ -9,6 +9,7 @@ STOPS = [
 # stop_id - id from http://proximobus.appspot.com/agencies/sf-muni/routes/12/stops.json
 # stop_name - human readable name of the stop
 
-
-# Production specific settings
-# DEBUG = False
+try:
+    from settingslocal import *
+except:
+    pass
