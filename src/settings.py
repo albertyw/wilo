@@ -1,8 +1,7 @@
 DEBUG = True
 STOPS = [
-    {'line_name':'12', 'stop_id':'14657', 'stop_name':'Folsom St & 3rd St'},
-    {'line_name':'10', 'stop_id':'13009', 'stop_name':'2nd St & Harrison St'},
-    {'line_name':'8X', 'stop_id':'13723', 'stop_name':'Bryan St & 4th St'},
+    {'line_name':'KT', 'stop_id':'17361', 'stop_name':'KT Inbound'},
+    {'line_name':'22', 'stop_id':'16657', 'stop_name':'Tennessee St & 18th St'},
 ]
 # Each dict in STOPS is:
 # line_name - id from http://proximobus.appspot.com/agencies/sf-muni/routes.json
