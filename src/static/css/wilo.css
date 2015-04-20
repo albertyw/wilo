@@ -2,6 +2,22 @@ h4 {
     display:inline;
 }
 
+body {
+    padding: 0px;
+}
+
 .progress-bar-default {
     background: #BDC3C7;
+}
+
+#footer {
+    position:fixed;
+    width:100%;
+    height:70px;
+    padding:5px;
+    bottom:0px;
+}
+
+a:link, a:hover, a:active, a:visited {
+    color: #333333;
 }
