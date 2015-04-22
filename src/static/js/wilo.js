@@ -35,11 +35,22 @@ wilo.filter('formatted_times', function() {
 });
 
 wilo.controller('ClockController', function($scope, $timeout, $sce) {
-  var getClock = function() {
-    var date = new Date();
+  var getHour = function(date){
+    return ((date.getHours()-1)%12+1);
+  };
+  var getSeparator = function(date){
     var separator = ':';
     if(date.getSeconds() % 2 == 1) { separator = '<span style="visibility:hidden">'+separator+'</span>'; }
-    var clock = ((date.getHours()-1)%12+1) + separator + date.getMinutes();
+    return separator;
+  };
+  var getMinute = function(date){
+    var minute = date.getMinutes();
+    if(minute < 10) { minute = '0'+minute; }
+    return minute;
+  };
+  var getClock = function() {
+    var date = new Date();
+    var clock = getHour(date) + getSeparator(date) + getMinute(date);
     $scope.clock = $sce.trustAsHtml(clock);
     $timeout(getClock, 1000);
   };
