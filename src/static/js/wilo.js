@@ -34,6 +34,18 @@ wilo.filter('formatted_times', function() {
   };
 });
 
+wilo.controller('ClockController', function($scope, $timeout, $sce) {
+  var getClock = function() {
+    var date = new Date();
+    var separator = ':';
+    if(date.getSeconds() % 2 == 1) { separator = '<span style="visibility:hidden">'+separator+'</span>'; }
+    var clock = ((date.getHours()-1)%12+1) + separator + date.getMinutes();
+    $scope.clock = $sce.trustAsHtml(clock);
+    $timeout(getClock, 1000);
+  };
+  getClock();
+});
+
 /*
  * Put default times in stops so that there isn't an error before the first AJAX request is finished
  */
