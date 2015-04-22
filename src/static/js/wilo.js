@@ -36,7 +36,7 @@ wilo.filter('formatted_times', function() {
 
 wilo.controller('ClockController', function($scope, $timeout, $sce) {
   var getHour = function(date){
-    return ((date.getHours()-1)%12+1);
+    return ((date.getHours()+11)%12+1);
   };
   var getSeparator = function(date){
     var separator = ':';
