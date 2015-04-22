@@ -10,7 +10,7 @@ wilo.config(function($interpolateProvider) {
 // Controller for stop times
 wilo.controller('StopsController', function($scope, $http, $timeout) {
   var getTimes = function() {
-    angular.forEach(stops, function(stop, index){
+    angular.forEach(stops, function(stop){
       var proximoUrl = 'http://proximobus.appspot.com/agencies/sf-muni/stops/'+stop.stop_id+'/predictions.json';
       $http.get(proximoUrl).success(function(data) {
         stop.times = parseTimes(data);
@@ -18,7 +18,7 @@ wilo.controller('StopsController', function($scope, $http, $timeout) {
       });
     });
     $timeout(getTimes, 30 * 1000);
-  }
+  };
   stops = addDefaultTimes(stops);
   $scope.stops = stops;
   getTimes();
@@ -28,8 +28,8 @@ wilo.controller('StopsController', function($scope, $http, $timeout) {
 wilo.filter('formatted_times', function() {
   return function(times) {
     times.sort(function(a,b){return parseInt(a)-parseInt(b)});
-    formatted_times = times.join(', ');
-    if(times.length == 0) formatted_times = 'Unknown';
+    var formatted_times = times.join(', ');
+    if(times.length === 0) { formatted_times = 'Unknown'; }
     return formatted_times;
   };
 });
@@ -40,7 +40,7 @@ wilo.controller('ClockController', function($scope, $timeout, $sce) {
   };
   var getSeparator = function(date){
     var separator = ':';
-    if(date.getSeconds() % 2 == 1) { separator = '<span style="visibility:hidden">'+separator+'</span>'; }
+    if(date.getSeconds() % 2 === 1) { separator = '<span style="visibility:hidden">'+separator+'</span>'; }
     return separator;
   };
   var getMinute = function(date){
@@ -90,22 +90,23 @@ function calculateProgressBar(times, total_time){
   for(var i = 0; i < time_slots.length; i++){time_slots[i] = 'default';}
 
   // Populate time slots with values
-  for(var i = 0; i < times.length; i++){
-    var arrival = times[i];
+  var arrival, s;
+  for(i = 0; i < times.length; i++){
+    arrival = times[i];
     // Red
     for(var j=0; j<colors[0]; j++){
       if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       s = time_slots[arrival-j];
-      if(s != 'warning' && s != 'success') time_slots[arrival-j] = 'danger';
+      if(s !== 'warning' && s !== 'success') { time_slots[arrival-j] = 'danger' };
     }
     // Yellow
-    for(var j=colors[0]; j<colors[1]; j++){
+    for(j=colors[0]; j<colors[1]; j++){
       if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       s = time_slots[arrival-j];
-      if(s != 'success') time_slots[arrival-j] = 'warning';
+      if(s !== 'success') { time_slots[arrival-j] = 'warning' };
     }
     // Green
-    for(var j=colors[1]; j<colors[2]; j++){
+    for(j=colors[1]; j<colors[2]; j++){
       if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       time_slots[arrival-j] = 'success';
     }
@@ -115,8 +116,8 @@ function calculateProgressBar(times, total_time){
   var time_lengths = [];
   var current_length = 0;
   var current_color = time_slots[0];
-  for(var i=0; i<time_slots.length; i++){
-    if(time_slots[i] != current_color){
+  for(i=0; i<time_slots.length; i++){
+    if(time_slots[i] !== current_color){
       time_lengths.push([current_color, current_length]);
       current_color = time_slots[i+1];
       current_length = 0;
@@ -126,7 +127,7 @@ function calculateProgressBar(times, total_time){
   time_lengths.push([current_color, current_length]);
 
   // Convert lengths into percentages
-  for(var i=0; i<time_lengths.length; i++){
+  for(i=0; i<time_lengths.length; i++){
     time_lengths[i][1] = 100 * time_lengths[i][1] / total_time;
   }
   return time_lengths;
