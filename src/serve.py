@@ -12,7 +12,8 @@ app.debug = settings.DEBUG
 
 @app.route("/")
 def root():
-    return render_template('home.html', stops = json.dumps(settings.STOPS))
+    wifi = {'WIFI_NAME': settings.WIFI_NAME, 'WIFI_PASSWORD': settings.WIFI_PASSWORD}
+    return render_template('home.html', stops = json.dumps(settings.STOPS), wifi=wifi)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=9001)
