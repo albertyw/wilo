@@ -56,6 +56,8 @@ function parseTimes(proximoData) {
   times.sort();
   return times;
 }
+
+var colors = [2, 4, 7];
 /*
  * Find widths in order to make an arrival progress bar
  */
@@ -68,19 +70,19 @@ function calculateProgressBar(times, total_time){
   for(var i = 0; i < times.length; i++){
     var arrival = times[i];
     // Red
-    for(var j=0; j < 2; j++){
+    for(var j=0; j<colors[0]; j++){
       if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       s = time_slots[arrival-j];
       if(s != 'warning' && s != 'success') time_slots[arrival-j] = 'danger';
     }
     // Yellow
-    for(var j=2; j < 6; j++){
+    for(var j=colors[0]; j<colors[1]; j++){
       if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       s = time_slots[arrival-j];
       if(s != 'success') time_slots[arrival-j] = 'warning';
     }
     // Green
-    for(var j=6; j < 10; j++){
+    for(var j=colors[1]; j<colors[2]; j++){
       if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       time_slots[arrival-j] = 'success';
     }
