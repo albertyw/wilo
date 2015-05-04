@@ -10,7 +10,7 @@ wilo.config(function($interpolateProvider) {
 // Controller for stop times
 wilo.controller('StopsController', function($scope, $http, $timeout) {
   var getTimes = function() {
-    angular.forEach(stops, function(stop){
+    angular.forEach($scope.stops, function(stop){
       var proximoUrl = 'http://proximobus.appspot.com/agencies/sf-muni/stops/'+stop.stop_id+'/predictions.json';
       $http.get(proximoUrl).success(function(data) {
         stop.times = parseTimes(data);
@@ -19,8 +19,7 @@ wilo.controller('StopsController', function($scope, $http, $timeout) {
     });
     $timeout(getTimes, 30 * 1000);
   };
-  stops = addDefaultTimes(stops);
-  $scope.stops = stops;
+  $scope.stops = addDefaultTimes(stops);
   getTimes();
 });
 
