@@ -26,7 +26,6 @@ wilo.controller('StopsController', function($scope, $http, $timeout) {
 // Filter format time array into string
 wilo.filter('formatted_times', function() {
   return function(times) {
-    times.sort(function(a,b){return parseInt(a)-parseInt(b)});
     var formatted_times = times.join(', ');
     if(times.length === 0) { formatted_times = 'Unknown'; }
     return formatted_times;
@@ -73,9 +72,9 @@ function parseTimes(proximoData) {
   proximoData = proximoData.items;
   var times = [];
   for(var i=0; i<proximoData.length; i++){
-    times.push(proximoData[i].minutes);
+    times.push(parseInt(proximoData[i].minutes));
   }
-  times.sort();
+  times.sort(function(x,y){return x-y});
   return times;
 }
 
