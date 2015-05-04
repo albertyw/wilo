@@ -77,7 +77,7 @@ function parseTimes(proximoData) {
   for(var i=0; i<proximoData.length; i++){
     times.push(parseInt(proximoData[i].minutes));
   }
-  times.sort(function(x,y){return x-y});
+  times.sort(function(x,y){return x-y;});
   return times;
 }
 
@@ -98,13 +98,13 @@ function calculateProgressBar(times, total_time){
     for(var j=0; j<colors[0]; j++){
       if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       s = time_slots[arrival-j];
-      if(s !== 'warning' && s !== 'success') { time_slots[arrival-j] = 'danger' };
+      if(s !== 'warning' && s !== 'success') { time_slots[arrival-j] = 'danger'; }
     }
     // Yellow
     for(j=colors[0]; j<colors[1]; j++){
       if(arrival-j < 0 || arrival-j > total_time-1){ continue; }
       s = time_slots[arrival-j];
-      if(s !== 'success') { time_slots[arrival-j] = 'warning' };
+      if(s !== 'success') { time_slots[arrival-j] = 'warning'; }
     }
     // Green
     for(j=colors[1]; j<colors[2]; j++){
