@@ -21,7 +21,7 @@ wilo.controller('StopsController', function($scope, $http, $timeout) {
     });
     $timeout(getTimes, 30 * 1000);
   };
-  $scope.stops = addDefaultTimes(stops);
+  $scope.stops = stops;
   $scope.nextTime = [];
   getTimes();
 });
@@ -57,16 +57,6 @@ wilo.controller('ClockController', function($scope, $timeout, $sce) {
   };
   getClock();
 });
-
-/*
- * Put default times in stops so that there isn't an error before the first AJAX request is finished
- */
-function addDefaultTimes(stops) {
-  for(var i=0; i<stops.length; i++){
-    stops[i].times = [];
-  }
-  return stops;
-}
 
 /*
  * Parse the data returned from proximobus.appspot.com
