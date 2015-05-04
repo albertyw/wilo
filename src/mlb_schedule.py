@@ -4,6 +4,7 @@ Forked from https://github.com/tash1207/MLB-Schedule
 
 import csv
 import datetime
+import pytz
 import urllib
 import urllib2
 
@@ -56,7 +57,7 @@ def compare_dates(today_date, game_date):
 
 def get_todays_game():
   """ Search through all the games today and return all games today """
-  today = datetime.date.today()
+  today = datetime.datetime.now(pytz.timezone('America/Los_Angeles')).date()
   # Set team_id to the SF Giants
   team_id = 137
   season = 2015
