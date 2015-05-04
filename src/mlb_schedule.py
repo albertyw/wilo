@@ -54,18 +54,27 @@ def compare_dates(today_date, game_date):
   else:
     return False
 
-def main():
+def get_todays_game():
+  """ Search through all the games today and return all games today """
   today = datetime.date.today()
   # Set team_id to the SF Giants
   team_id = 137
   season = 2015
   sched_csv = get_mlb_schedule(team_id, season)
   sched_dict = parse_csv(sched_csv)
+  games = []
   for line in sched_dict:
     game_date = line['START_DATE']
     # If there is a game today, print the teams playing and start time
     if compare_dates(today, game_date):
-      print line['SUBJECT'], line['START_DATE'], line['START_TIME']
+      games.append(line)
+  return games
+
+
+def main():
+  games = get_todays_game()
+  for game in games:
+    print game['SUBJECT'], game['START_DATE'], game['START_TIME']
 
 if __name__ == '__main__':
   main()
