@@ -65,10 +65,12 @@ def get_todays_game():
   sched_dict = parse_csv(sched_csv)
   games = []
   for line in sched_dict:
+    if line['LOCATION'] != 'AT&T Park':
+      continue
     game_date = line['START_DATE']
-    # If there is a game today, print the teams playing and start time
-    if compare_dates(today, game_date):
-      games.append(line)
+    if not compare_dates(today, game_date):
+      continue
+    games.append(line)
   return games
 
 
