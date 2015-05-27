@@ -20,6 +20,5 @@ function formatGame(data){
     game = data[x];
     html += 'Giants game at '+game['START_TIME']+' - '+game['END_TIME']+'<br />';
   }
-  console.log(html);
   return html;
 }
