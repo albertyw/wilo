@@ -10,12 +10,12 @@ wilo.config(function($interpolateProvider) {
 // Controller for stop times
 wilo.controller('StopsController', function($scope, $http, $timeout) {
   var getTimes = function() {
-    $scope.nextTime = [];
     angular.forEach($scope.stops, function(stop, index){
       var proximoUrl = 'http://proximobus.appspot.com/agencies/sf-muni/stops/'+stop.stop_id+'/predictions.json';
       $http.get(proximoUrl).success(function(data) {
         stop.times = parseTimes(data);
         stop.progress = calculateProgressBar(stop.times, 30);
+        chime(index, $scope.nextTime[index], stop.times[0]);
         $scope.nextTime[index] = stop.times[0];
       });
     });
@@ -122,4 +122,11 @@ function calculateProgressBar(times, total_time){
     time_lengths[i][1] = 100 * time_lengths[i][1] / total_time;
   }
   return time_lengths;
+}
+
+function chime(index, oldTime, newTime) {
+  if(index === 0 && oldTime > 5 && newTime <= 5) {
+    var audio = new Audio("/static/chime.mp3");
+    audio.play();
+  }
 }
