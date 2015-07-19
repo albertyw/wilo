@@ -11,7 +11,7 @@ wilo.config(function($interpolateProvider) {
 wilo.controller('StopsController', function($scope, $http, $timeout) {
   var getTimes = function() {
     angular.forEach($scope.stops, function(stop, index){
-      var proximoUrl = 'http://proximobus.appspot.com/agencies/sf-muni/stops/'+stop.stop_id+'/predictions.json';
+      var proximoUrl = 'http://restbus.info/api/agencies/sf-muni/stops/'+stop.stop_id+'/predictions';
       $http.get(proximoUrl).success(function(data) {
         stop.times = parseTimes(data);
         stop.progress = calculateProgressBar(stop.times, 30);
@@ -61,11 +61,11 @@ wilo.controller('ClockController', function($scope, $timeout, $sce) {
 /*
  * Parse the data returned from proximobus.appspot.com
  */
-function parseTimes(proximoData) {
-  proximoData = proximoData.items;
+function parseTimes(data) {
+  data = data[0].values;
   var times = [];
-  for(var i=0; i<proximoData.length; i++){
-    times.push(parseInt(proximoData[i].minutes));
+  for(var i=0; i<data.length; i++){
+    times.push(data[i].minutes);
   }
   times.sort(function(x,y){return x-y;});
   return times;
