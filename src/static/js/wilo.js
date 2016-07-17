@@ -7,25 +7,6 @@ wilo.config(function($interpolateProvider) {
   $interpolateProvider.endSymbol('}]}');
 });
 
-// Controller for stop times
-wilo.controller('StopsController', function($scope, $http, $timeout) {
-  var getTimes = function() {
-    angular.forEach($scope.stops, function(stop, index){
-      var proximoUrl = 'http://restbus.info/api/agencies/sf-muni/stops/'+stop.stop_id+'/predictions';
-      $http.get(proximoUrl).success(function(data) {
-        stop.times = parseTimes(data);
-        stop.progress = calculateProgressBar(stop.times, 30);
-        chime(index, $scope.nextTime[index], stop.times[0]);
-        $scope.nextTime[index] = stop.times[0];
-      });
-    });
-    $timeout(getTimes, 30 * 1000);
-  };
-  $scope.stops = stops;
-  $scope.nextTime = [];
-  getTimes();
-});
-
 // Filter format time array into string
 wilo.filter('formatted_times', function() {
   return function(times) {
