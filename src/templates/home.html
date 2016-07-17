@@ -1,6 +1,6 @@
-<html ng-app="wilo" ng-controller="StopsController">
+<html ng-app="wilo">
 <head>
-<title>WILO {[{ nextTime }]}</title>
+<title>WILO</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
 <link rel="stylesheet" href="/static/css/wilo.css">
@@ -14,23 +14,6 @@
 <div class="container">
   <div class="col-md-12">
     <h1 ng-controller="ClockController" ng-bind-html="clock"></h1>
-    <h3>Time until</h3>
-    <div ng-repeat="stop in stops">
-      <h4>{[{ stop.line_name }]}</h4>
-      at
-      <span>{[{ stop.stop_name }]}</span>:
-      <h4>
-        {[{ stop.times|formatted_times }]}
-      </h4>
-      {[{ stop.times.length > 0 ? ' minutes' : '' }]}
-      <div class="progress">
-        <div class="progress-bar progress-bar-{[{ p.0 }]}" style="width: {[{p.1 }]}%;" ng-repeat="p in stop.progress"></div>
-      </div>
-    </div>
-    <small>
-      <span>Now</span>
-      <span class="pull-right">30 min</span>
-    </small>
   </div>
 </div>
 <div>&nbsp;</div>
@@ -54,9 +37,6 @@
 <script src="/static/js/wilo.js"></script>
 <script src="/static/js/background.js"></script>
 
-<script type="text/javascript">
-var stops = JSON.parse('{{ stops|safe }}');
-</script>
 </body>
 
 </html>
