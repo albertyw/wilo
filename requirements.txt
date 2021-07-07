@@ -1,3 +1,4 @@
 Flask==0.12.0
 gunicorn==19.6.0
+uber_rides==0.2.4
 pytz
